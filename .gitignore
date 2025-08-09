@@ -1,0 +1,35 @@
+*.class
+/node_modules
+
+*.pem
+*.ppk
+
+# mobile tools for java (J2ME)
+.mtj.tmp/
+
+# package files
+*.jar
+*.war
+*.ear
+*.yml
+*.yaml
+
+# Gradle temporary files
+target/
+
+# Eclipse files
+**/.project
+**/.classpath
+**/.settings/
+/bin/
+blog/bin/
+**/.tern-project
+
+# IntelliJ files
+**/*.iml
+**/.idea
+**/.gradle
+
+# virtual machine crash logs
+hs_err_pid*
+/.metadata/
