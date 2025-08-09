@@ -16,7 +16,7 @@
 
 # Gradle temporary files
 target/
-
+HELP.md
 # Eclipse files
 **/.project
 **/.classpath
