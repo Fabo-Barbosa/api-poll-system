@@ -31,9 +31,6 @@ public class Poll implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Topic> topics;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-	private List<User> participants;
 
 	public long getId() {
 		return id;
@@ -67,17 +64,9 @@ public class Poll implements Serializable {
 		this.topics = topics;
 	}
 
-	public List<User> getParticipants() {
-		return participants;
-	}
-
-	public void setParticipants(List<User> participants) {
-		this.participants = participants;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(description, id, participants, title, topics);
+		return Objects.hash(description, id, title, topics);
 	}
 
 	@Override
@@ -90,7 +79,7 @@ public class Poll implements Serializable {
 			return false;
 		Poll other = (Poll) obj;
 		return Objects.equals(description, other.description) && id == other.id
-				&& Objects.equals(participants, other.participants) && Objects.equals(title, other.title)
+				&& Objects.equals(title, other.title)
 				&& Objects.equals(topics, other.topics);
 	}
 

@@ -1,16 +1,13 @@
 package br.com.fabo.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,8 +23,8 @@ public class Topic implements Serializable {
 	@Column(name = "content", nullable = false, updatable = false, length = 200)
 	private String content;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<User> votes;
+	@Column(name = "votes", nullable = false)
+	private long votes;
 	
 	public long getId() {
 		return id;
@@ -41,10 +38,10 @@ public class Topic implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public List<User> getVotes() {
+	public long getVotes() {
 		return votes;
 	}
-	public void setVotes(List<User> votes) {
+	public void setVotes(long votes) {
 		this.votes = votes;
 	}
 	@Override
