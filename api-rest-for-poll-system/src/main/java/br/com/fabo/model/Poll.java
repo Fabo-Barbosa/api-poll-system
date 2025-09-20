@@ -21,7 +21,7 @@ public class Poll implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Column(name = "title", nullable = false, updatable = false, length = 45)
 	private String title;
@@ -32,6 +32,10 @@ public class Poll implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Topic> topics;
 
+	// Data de criação da enquete
+	// Data de encerramento da enquete
+	// Data de ínicio da enquete
+	// Status da enquete (ENUM)
 	public long getId() {
 		return id;
 	}
