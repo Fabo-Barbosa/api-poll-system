@@ -5,9 +5,12 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,28 +29,50 @@ public class Topic implements Serializable {
 	@Column(name = "votes", nullable = false)
 	private long votes;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "poll_id", nullable = false)
+	private Poll poll;
+	
+	// idea: I can create a Vote Join Table to get a user votes
+	// the relationship will be between topic and user.
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public long getVotes() {
 		return votes;
 	}
+
 	public void setVotes(long votes) {
 		this.votes = votes;
 	}
+
+	public Poll getPoll() {
+		return poll;
+	}
+
+	public void setPoll(Poll poll) {
+		this.poll = poll;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(content, id, votes);
+		return Objects.hash(content, id, poll, votes);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -57,7 +82,10 @@ public class Topic implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Topic other = (Topic) obj;
-		return Objects.equals(content, other.content) && id == other.id && Objects.equals(votes, other.votes);
+		return Objects.equals(content, other.content) && id == other.id && Objects.equals(poll, other.poll)
+				&& votes == other.votes;
 	}
+	
+	
 	
 }
