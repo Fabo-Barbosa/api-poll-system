@@ -37,6 +37,12 @@ public class Poll implements Serializable {
 	// Data de encerramento da enquete
 	// Data de ínicio da enquete
 	// Status da enquete (ENUM)
+	
+	public void addTopic(Topic topic) {
+		topic.setPoll(this);
+		this.topics.add(topic);
+	}
+	
 	public long getId() {
 		return id;
 	}

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.fabo.exceptions.ResourceNotFoundException;
 import br.com.fabo.model.Poll;
-import repositories.PollRepository;
+import br.com.fabo.repositories.PollRepository;
 
 @Service
 public class PollServices {

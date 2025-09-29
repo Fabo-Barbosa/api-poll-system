@@ -21,13 +21,13 @@ public class Topic implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Column(name = "content", nullable = false, updatable = false, length = 200)
 	private String content;
 	
 	@Column(name = "votes", nullable = false)
-	private long votes;
+	private Long votes;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "poll_id", nullable = false)
