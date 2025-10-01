@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,6 +32,7 @@ public class Poll implements Serializable {
 	@Column(name = "description", length = 120)
 	private String description;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "poll", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Topic> topics;
 
@@ -37,11 +40,6 @@ public class Poll implements Serializable {
 	// Data de encerramento da enquete
 	// Data de ínicio da enquete
 	// Status da enquete (ENUM)
-	
-	public void addTopic(Topic topic) {
-		topic.setPoll(this);
-		this.topics.add(topic);
-	}
 	
 	public long getId() {
 		return id;

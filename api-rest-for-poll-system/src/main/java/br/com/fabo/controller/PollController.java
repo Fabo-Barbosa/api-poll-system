@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fabo.model.Poll;
+import br.com.fabo.model.Topic;
 import br.com.fabo.services.PollServices;
 
 @RestController
@@ -41,7 +42,9 @@ public class PollController {
 	public Poll create(@RequestBody Poll poll) throws Exception {
 		
 		if (poll.getTopics() != null) {
-			poll.getTopics().forEach(topic -> poll.addTopic(topic));
+			for (Topic topic : poll.getTopics()) {
+				topic.setPoll(poll);
+			}
 		}
 		
 		return service.createPoll(poll);

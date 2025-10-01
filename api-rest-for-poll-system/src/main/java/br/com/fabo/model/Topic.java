@@ -3,6 +3,8 @@ package br.com.fabo.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,6 +31,7 @@ public class Topic implements Serializable {
 	@Column(name = "votes", nullable = false)
 	private Long votes;
 	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "poll_id", nullable = false)
 	private Poll poll;
